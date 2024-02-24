@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  myapp:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - START_VALUE=6
+      - END_VALUE=99
+
+  test:
+    build: .
+    volumes:
+      - .:/app
+    command: pytest tests
+    environment:
+      - START_VALUE=6
+      - END_VALUE=99
